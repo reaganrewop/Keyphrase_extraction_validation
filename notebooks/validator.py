@@ -1,3 +1,17 @@
+# ---
+# jupyter:
+#   jupytext:
+#     text_representation:
+#       extension: .py
+#       format_name: light
+#       format_version: '1.3'
+#       jupytext_version: 0.8.6
+#   kernelspec:
+#     display_name: Python [conda env:DL-wpython3]
+#     language: python
+#     name: conda-env-DL-wpython3-py
+# ---
+
 '''
 import xmltodict
 
@@ -39,9 +53,10 @@ references_text = {}
 custom_regex = []
 spacy = []
 textrank_key = []
-tp_all=0
-fp_all=0
-fn_all=0
+tp_all=[0,0,0]
+fp_all=[0,0,0]
+fn_all=[0,0,0]
+file_count =0
 for single_file in inputfiles:
         with open(single_file + '.key', 'r') as f:
                 lines = f.readlines()
@@ -80,9 +95,14 @@ for single_file in inputfiles:
                 for key in true_key_dict.keys():
                         if true_key_dict[key] == 0:
                                 fn+=1
-                tp_all+=tp
-                fp_all+=fp
-                fn_all+=fn
+                tp_all[i]+=tp
+                fp_all[i]+=fp
+                fn_all[i]+=fn
+        file_count+=1
+        if (file_count==10):
+            break
 for i,algo in enumerate([custom_regex,spacy,textrank_key]):
-        recall = tp_all/(tp_all+fn_all)
+        recall = tp_all[i]/(tp_all[i]+fn_all[i])
         print("recall for  " + {0:"custom_Regex",1:"spacy",2:"textrank"}[i] + " is: " + str(recall))
+
+

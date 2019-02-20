@@ -1,3 +1,17 @@
+# ---
+# jupyter:
+#   jupytext:
+#     text_representation:
+#       extension: .py
+#       format_name: light
+#       format_version: '1.3'
+#       jupytext_version: 0.8.6
+#   kernelspec:
+#     display_name: Python [conda env:DL-wpython3]
+#     language: python
+#     name: conda-env-DL-wpython3-py
+# ---
+
 import time
 import numpy as np
 import pandas as pd
@@ -177,3 +191,5 @@ def getCandidatePhrases(transcript):
         "POS":list(key_pos.values())
     })
     return df
+
+getCandidatePhrases("With a foundation in artificial intelligence and media analytics, Ether starts its course by enabling a smart call service on top of Slack, Stride, and Teams. Ether captures and analyzes the call (audio, video, shared content, etc) as the call happens and extracts key markers.")
